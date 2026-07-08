@@ -1,7 +1,7 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  background-color: #0f172a;
-  color: #f1f5f9;
   scroll-behavior: smooth;
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300;
 }
