@@ -1,123 +1,171 @@
 import { motion } from "framer-motion";
-import { FaBriefcase, FaMapMarkerAlt, FaCalendarAlt, FaGraduationCap } from "react-icons/fa";
+import {
+  FaBriefcase,
+  FaGraduationCap,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaCheckCircle,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 
-const timelineItems = [
+const experiences = [
   {
     type: "work",
-    title: "Intern → Website Developer",
-    company: "MakeBrands",
-    location: "Office #724, Trade Tower, Civil Lines, Karachi",
-    duration: "Feb 2026 — Present",
-    points: [
-      "Designed and developed client websites from scratch",
-      "Built fully responsive layouts for desktop and mobile",
-      "Fixed bugs and resolved website issues",
-      "Managed and tracked website orders",
-      "Handled overall website maintenance and updates",
+    role: "Website Developer & Maintenance",
+    company: "MakeBrands Marketing Agency",
+    location: "Trade Tower, Civil Lines, Karachi",
+    period: "Feb 2026 — Present",
+    badge: "Current Role",
+    link: "https://makebrands.pk/",
+    achievements: [
+      "Engineered, customized, and maintained client e-commerce and agency websites from scratch.",
+      "Developed high-converting, fully responsive UI layouts optimized for mobile performance and fast loading.",
+      "Diagnosed and resolved critical frontend bugs, layout inconsistencies, and cross-browser discrepancies.",
+      "Integrated seamless checkout experiences and assisted with customer order tracking workflows.",
     ],
-    skills: ["HTML", "CSS", "React", "Shopify", "AI Tools"],
+    technologies: ["React", "Shopify", "Tailwind CSS", "Liquid", "JavaScript", "AI Tools"],
   },
   {
     type: "education",
-    title: "Certified Web Developer",
-    company: "Aptech",
-    location: "Karachi",
-    duration: "Oct 2024 — Present",
-    points: [
-      "Learning the MERN Stack (MongoDB, Express, React, Node.js)",
-      "Studying database design and management",
-      "Covering HTML, CSS, JavaScript, and other core web development languages used to build modern websites",
+    role: "Certified Web Developer (MERN Stack)",
+    company: "Aptech Learning Institute",
+    location: "Karachi, Pakistan",
+    period: "Oct 2024 — Present",
+    badge: "Specialized Training",
+    link: null,
+    achievements: [
+      "In-depth training across the MERN Stack: MongoDB, Express.js, React, and Node.js.",
+      "Comprehensive focus on relational & NoSQL database architecture, schema design, and query optimization.",
+      "Mastery of modern JavaScript (ES6+), asynchronous programming, RESTful APIs, and state management.",
     ],
-    skills: ["MongoDB", "Express", "React", "Node.js", "JavaScript"],
+    technologies: ["MongoDB", "Express.js", "React", "Node.js", "JavaScript", "HTML5/CSS3"],
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 max-w-5xl mx-auto">
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="inline-block text-xs tracking-widest uppercase text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 rounded-full mb-5"
-      >
-        Experience
-      </motion.span>
+    <section id="experience" className="py-24 px-4 sm:px-6 max-w-5xl mx-auto relative">
+      {/* Section Header */}
+      <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-3"
+        >
+          <FaBriefcase className="text-xs" />
+          <span>EXPERIENCE & JOURNEY</span>
+        </motion.div>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold mb-10 text-slate-900 dark:text-white"
-      >
-        Recent <span className="text-cyan-600 dark:text-cyan-400">experience.</span>
-      </motion.h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white tracking-tight"
+        >
+          Career & <span className="gradient-text-amber">Professional Growth</span>
+        </motion.h2>
+      </div>
 
-      <div className="relative pl-8">
-        <div className="absolute left-2 top-2 bottom-2 w-px bg-slate-300 dark:bg-slate-700"></div>
+      {/* Modern Glowing Node Timeline */}
+      <div className="relative pl-6 sm:pl-10 space-y-10">
+        {/* Continuous timeline line */}
+        <div className="absolute left-[11px] sm:left-[19px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-amber-500 via-orange-500 to-stone-300 dark:to-stone-800" />
 
-        <div className="space-y-6">
-          {timelineItems.map((item, index) => (
+        {experiences.map((exp, idx) => {
+          const isWork = exp.type === "work";
+          return (
             <motion.div
-              key={item.title}
+              key={exp.role}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              transition={{ delay: idx * 0.15, duration: 0.5 }}
+              className="relative group"
             >
-              <span className="absolute -left-[27px] top-8 w-3 h-3 rounded-full bg-cyan-500 dark:bg-cyan-400"></span>
+              {/* Timeline node icon */}
+              <div className="absolute -left-[23px] sm:-left-[31px] top-5 w-6 h-6 rounded-full bg-white dark:bg-stone-900 border-2 border-amber-500 flex items-center justify-center shadow-md shadow-amber-500/30 group-hover:scale-125 transition-transform duration-300">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+              </div>
 
-              <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-cyan-500 dark:hover:border-cyan-400 transition-colors duration-300">
-                <div className="flex flex-wrap justify-between items-start gap-3 mb-3">
-                  <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
-                    {item.type === "education" && (
-                      <FaGraduationCap className="text-cyan-600 dark:text-cyan-400" />
+              {/* Experience Card */}
+              <div className="glass-card rounded-3xl p-6 sm:p-8">
+                {/* Header info */}
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
+                        {exp.badge}
+                      </span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white flex items-center gap-2.5">
+                      {isWork ? (
+                        <FaBriefcase className="text-amber-500 text-lg" />
+                      ) : (
+                        <FaGraduationCap className="text-orange-500 text-xl" />
+                      )}
+                      <span>{exp.role}</span>
+                    </h3>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-stone-200/70 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300">
+                    <FaCalendarAlt className="text-amber-500 text-xs" />
+                    {exp.period}
+                  </span>
+                </div>
+
+                {/* Company & Location */}
+                <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-stone-600 dark:text-stone-400 mb-6">
+                  <span className="font-semibold text-stone-800 dark:text-stone-200 flex items-center gap-1.5">
+                    {exp.company}
+                    {exp.link && (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-amber-500 hover:text-amber-400 inline-block ml-1"
+                      >
+                        <FaExternalLinkAlt size={11} />
+                      </a>
                     )}
-                    {item.title}
-                  </h3>
-                  <span className="flex items-center gap-2 text-xs bg-slate-200 dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                    <FaCalendarAlt className="text-cyan-600 dark:text-cyan-400" />
-                    {item.duration}
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <FaMapMarkerAlt className="text-amber-500 text-xs" />
+                    {exp.location}
                   </span>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  <span className="flex items-center gap-2">
-                    <FaBriefcase className="text-cyan-600 dark:text-cyan-400" />
-                    {item.company}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <FaMapMarkerAlt className="text-cyan-600 dark:text-cyan-400" />
-                    {item.location}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 mb-5">
-                  {item.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-slate-600 dark:text-slate-400 text-sm">
-                      <span className="text-cyan-600 dark:text-cyan-400 mt-1">●</span>
-                      {point}
+                {/* Bullet achievements */}
+                <ul className="space-y-2.5 mb-6">
+                  {exp.achievements.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2.5 text-stone-600 dark:text-stone-300 text-xs sm:text-sm leading-relaxed"
+                    >
+                      <FaCheckCircle className="text-amber-500 mt-0.5 shrink-0 text-xs" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap gap-2">
-                  {item.skills.map((skill) => (
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-stone-200 dark:border-stone-800">
+                  {exp.technologies.map((tech) => (
                     <span
-                      key={skill}
-                      className="text-xs font-medium bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-3 py-1 rounded-full"
+                      key={tech}
+                      className="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-white/5"
                     >
-                      {skill}
+                      {tech}
                     </span>
                   ))}
                 </div>
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );
