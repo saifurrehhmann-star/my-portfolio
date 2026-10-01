@@ -1,123 +1,119 @@
 import { motion } from "framer-motion";
-import { FaBriefcase, FaMapMarkerAlt, FaCalendarAlt, FaGraduationCap } from "react-icons/fa";
-
-const timelineItems = [
-  {
-    type: "work",
-    title: "Intern → Website Developer",
-    company: "MakeBrands",
-    location: "Office #724, Trade Tower, Civil Lines, Karachi",
-    duration: "Feb 2026 — Present",
-    points: [
-      "Designed and developed client websites from scratch",
-      "Built fully responsive layouts for desktop and mobile",
-      "Fixed bugs and resolved website issues",
-      "Managed and tracked website orders",
-      "Handled overall website maintenance and updates",
-    ],
-    skills: ["HTML", "CSS", "React", "Shopify", "AI Tools"],
-  },
-  {
-    type: "education",
-    title: "Certified Web Developer",
-    company: "Aptech",
-    location: "Karachi",
-    duration: "Oct 2024 — Present",
-    points: [
-      "Learning the MERN Stack (MongoDB, Express, React, Node.js)",
-      "Studying database design and management",
-      "Covering HTML, CSS, JavaScript, and other core web development languages used to build modern websites",
-    ],
-    skills: ["MongoDB", "Express", "React", "Node.js", "JavaScript"],
-  },
-];
+import { FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 export default function Experience() {
+  const experiences = [
+    {
+      type: "work",
+      role: "Intern → Website Developer",
+      company: "MakeBrands",
+      location: "Office #724, Trade Tower, Civil Lines, Karachi",
+      period: "Feb 2026 — Present",
+      points: [
+        "Designed and developed client websites from scratch with clean structure.",
+        "Built fully responsive layouts optimized for desktop, tablet, and mobile screens.",
+        "Identified and fixed website bugs, styling discrepancies, and performance issues.",
+        "Managed and tracked store orders, product updates, and client content.",
+        "Handled day-to-day website maintenance, updates, and Shopify store administration.",
+      ],
+      skills: ["HTML5", "CSS3", "React", "Shopify", "Liquid", "AI Tools"],
+    },
+    {
+      type: "education",
+      role: "Certified Web Developer Program",
+      company: "Aptech Computer Education",
+      location: "Karachi, Pakistan",
+      period: "Oct 2024 — Present",
+      points: [
+        "Studying the full MERN Stack (MongoDB, Express.js, React, Node.js).",
+        "Developing relational & non-relational database schemas and REST APIs.",
+        "Mastering core web development principles, modern JavaScript (ES6+), and responsive layouts.",
+      ],
+      skills: ["MongoDB", "Express.js", "React", "Node.js", "JavaScript (ES6+)"],
+    },
+  ];
+
   return (
-    <section id="experience" className="py-24 px-6 max-w-5xl mx-auto">
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="inline-block text-xs tracking-widest uppercase text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 rounded-full mb-5"
-      >
-        Experience
-      </motion.span>
+    <section id="experience" className="mx-auto max-w-7xl border-t border-[#DDD6C8] px-4 py-16 sm:px-8 sm:py-24 dark:border-[#2A2D36]">
+      {/* Section Header */}
+      <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.55 }} className="flex items-baseline gap-3 sm:gap-4 mb-10 sm:mb-16">
+        <span className="shrink-0 text-[#FF6A00] font-mono-tag text-xs sm:text-sm font-bold tracking-widest uppercase">
+          02 //
+        </span>
+          <h2 className="text-[clamp(1.35rem,6vw,3rem)] sm:text-5xl font-black tracking-tight text-[#171717] dark:text-[#F5F1E8] font-editorial">
+          EXPERIENCE & TIMELINE
+        </h2>
+      </motion.div>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold mb-10 text-slate-900 dark:text-white"
-      >
-        Recent <span className="text-cyan-600 dark:text-cyan-400">experience.</span>
-      </motion.h2>
+      {/* Editorial Vertical Timeline */}
+      <div className="relative pl-6 sm:pl-10 border-l border-[#DDD6C8] dark:border-[#2A2D36] space-y-16">
+        {experiences.map((item, index) => (
+          <motion.div
+            key={item.role + item.company}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="relative group"
+          >
+            {/* Orange Timeline Node */}
+            <span className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-[#F5F1E8] dark:bg-[#121316] border-2 border-[#FF6A00] flex items-center justify-center">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00]" />
+            </span>
 
-      <div className="relative pl-8">
-        <div className="absolute left-2 top-2 bottom-2 w-px bg-slate-300 dark:bg-slate-700"></div>
-
-        <div className="space-y-6">
-          {timelineItems.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
-            >
-              <span className="absolute -left-[27px] top-8 w-3 h-3 rounded-full bg-cyan-500 dark:bg-cyan-400"></span>
-
-              <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-cyan-500 dark:hover:border-cyan-400 transition-colors duration-300">
-                <div className="flex flex-wrap justify-between items-start gap-3 mb-3">
-                  <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
-                    {item.type === "education" && (
-                      <FaGraduationCap className="text-cyan-600 dark:text-cyan-400" />
-                    )}
-                    {item.title}
-                  </h3>
-                  <span className="flex items-center gap-2 text-xs bg-slate-200 dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                    <FaCalendarAlt className="text-cyan-600 dark:text-cyan-400" />
-                    {item.duration}
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  <span className="flex items-center gap-2">
-                    <FaBriefcase className="text-cyan-600 dark:text-cyan-400" />
-                    {item.company}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <FaMapMarkerAlt className="text-cyan-600 dark:text-cyan-400" />
-                    {item.location}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 mb-5">
-                  {item.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-slate-600 dark:text-slate-400 text-sm">
-                      <span className="text-cyan-600 dark:text-cyan-400 mt-1">●</span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {item.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs font-medium bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 px-3 py-1 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            {/* Main Header Information */}
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
+              <div className="min-w-0">
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono-tag uppercase tracking-wider text-[#FF6A00] font-semibold mb-1">
+                  {item.type === "work" ? <FaBriefcase size={11} /> : <FaGraduationCap size={12} />}
+                  {item.type === "work" ? "Professional Work" : "Education & Certification"}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#171717] dark:text-[#F5F1E8] font-editorial">
+                  {item.role}
+                </h3>
+                <p className="break-words text-base text-[#5F5B55] dark:text-[#9E9A92] font-medium mt-0.5">
+                  {item.company} · <span className="text-xs font-mono-tag">{item.location}</span>
+                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAE4D8] dark:bg-[#181A20] text-xs font-mono-tag text-[#171717] dark:text-[#F5F1E8] border border-[#DDD6C8] dark:border-[#2A2D36] self-start md:self-auto">
+                <FaCalendarAlt size={10} className="text-[#FF6A00]" />
+                <span>{item.period}</span>
+              </div>
+            </div>
+
+            {/* Content & Responsibilities */}
+            <div className="bg-[#EAE4D8]/60 dark:bg-[#181A20]/60 border border-[#DDD6C8] dark:border-[#2A2D36] rounded-2xl p-6 sm:p-8 mt-6">
+              <ul className="space-y-3 mb-6">
+                {item.points.map((pt) => (
+                  <li
+                    key={pt}
+                    className="flex items-start gap-3 text-sm sm:text-base text-[#5F5B55] dark:text-[#9E9A92] leading-relaxed"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] mt-2 shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Technologies Used */}
+              <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-[#DDD6C8]/80 dark:border-[#2A2D36]/80">
+                <span className="text-xs font-mono-tag uppercase text-[#171717] dark:text-[#F5F1E8] mr-2 font-semibold">
+                  Technologies:
+                </span>
+                {item.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="text-xs font-mono-tag px-3 py-1 rounded-md bg-[#F5F1E8] dark:bg-[#121316] text-[#171717] dark:text-[#F5F1E8] border border-[#DDD6C8] dark:border-[#2A2D36]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

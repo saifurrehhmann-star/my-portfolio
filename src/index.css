@@ -1,7 +1,90 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-body {
+@theme {
+  --font-display: "Plus Jakarta Sans", "Syne", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-warm-bg: #F5F1E8;
+  --color-warm-sub: #EAE4D8;
+  --color-warm-card: #FFFFFF;
+  --color-warm-text: #171717;
+  --color-warm-muted: #5F5B55;
+  --color-warm-border: #DDD6C8;
+
+  --color-dark-bg: #121316;
+  --color-dark-sub: #1A1C22;
+  --color-dark-card: #181A20;
+  --color-dark-text: #F5F1E8;
+  --color-dark-muted: #9E9A92;
+  --color-dark-border: #2A2D36;
+
+  --color-brand-orange: #FF6A00;
+  --color-brand-orange-hover: #E55F00;
+}
+
+:root {
+  --bg-main: #F5F1E8;
+  --bg-sub: #EAE4D8;
+  --bg-card: #FFFFFF;
+  --text-main: #171717;
+  --text-sub: #5F5B55;
+  --border-color: #DDD6C8;
+  --accent-orange: #FF6A00;
+  --accent-orange-hover: #E55F00;
+}
+
+.dark {
+  --bg-main: #121316;
+  --bg-sub: #1A1C22;
+  --bg-card: #181A20;
+  --text-main: #F5F1E8;
+  --text-sub: #9E9A92;
+  --border-color: #2A2D36;
+  --accent-orange: #FF6A00;
+  --accent-orange-hover: #E55F00;
+}
+
+html {
   scroll-behavior: smooth;
-  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300;
+  background-color: #F5F1E8;
+}
+
+html.dark {
+  background-color: #121316;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, .font-editorial {
+  font-family: "Plus Jakarta Sans", "Syne", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-tag {
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.04em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6A00;
 }

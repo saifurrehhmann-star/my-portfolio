@@ -1,5 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
+import "./App.css";
 
 // Lazy Imports
 const Navbar = lazy(() => import("./components/Navbar"));
@@ -29,22 +31,33 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center h-screen text-xl font-semibold">
-            Loading...
-          </div>
-        }
-      >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Suspense>
+      <div className="relative min-h-screen">
+        <div className="site-ambient" aria-hidden="true">
+          <div className="site-ambient__dots" />
+          <div className="site-ambient__glow site-ambient__glow--one" />
+          <div className="site-ambient__glow site-ambient__glow--two" />
+        </div>
+        <div className="relative z-10">
+          <Suspense
+            fallback={
+              <div className="flex h-screen items-center justify-center text-xl font-semibold">
+                Loading...
+              </div>
+            }
+          >
+            <MotionConfig reducedMotion="user">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/experience" element={<Experience />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </MotionConfig>
+          </Suspense>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }
